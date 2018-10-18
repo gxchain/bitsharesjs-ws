@@ -29,7 +29,7 @@ For use in a webpack/browserify context, see the example below for how to open a
 
 ```
 var {Apis} = require("gxbjs-ws");
-Apis.instance("wss://bitshares.openledger.info/ws").init_promise.then((res) => {
+Apis.instance("wss://node1.gxb.io",true).init_promise.then((res) => {
     console.log("connected to:", res[0].network);
     Apis.instance().db_api().exec( "set_subscribe_callback", [ updateListener, true ] )
 });
@@ -39,7 +39,3 @@ function updateListener(object) {
 }
 ```
 The `set_subscribe_callback` callback (updateListener) will be called whenever an object on the blockchain changes or is removed. This is very powerful and can be used to listen to updates for specific accounts, assets or most anything else, as all state changes happen through object updates. Be aware though that you will receive quite a lot of data this way.
-
-## Tests
-
-The tests show several use cases, to run, simply type `npm run test`. The tests require a local witness node to be running, as well as an active internet connection.
