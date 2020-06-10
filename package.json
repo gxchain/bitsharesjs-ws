@@ -13,7 +13,7 @@
     "postbuild": "npm run browserify && npm run build-es",
     "prepublish": "npm run build",
     "browserify": "NODE_ENV=production browserify cjs/src/ApiInstances.js --standalone gxbjs_ws -o build/gxbjs-ws.js -d",
-    "postbrowserify": "NODE_ENV=production uglifyjs --compress --mangle --sequences --drop_console --mangle-props --screw-ie8 --output build/gxbjs-ws.min.js -- build/gxbjs-ws.js",
+    "postbrowserify": "uglifyjs build/gxbjs-ws.js --compress --mangle --sequences --drop_console --mangle-props --output build/gxbjs-ws.min.js",
     "bundle": "npm run browserify && npm run minify"
   },
   "repository": {
@@ -38,14 +38,14 @@
     "ws": "^4.1.0"
   },
   "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.3.4",
+    "@babel/plugin-transform-runtime": "^7.3.4",
+    "@babel/preset-env": "^7.3.4",
+    "@babel/register": "^7.0.0",
     "assert": "^1.3.0",
-    "babel-cli": "^6.26.0",
-    "babel-core": "^6.26.3",
-    "babel-preset-es2015": "^6.24.1",
-    "babel-preset-stage-1": "^6.24.1",
     "browserify": "^13.0.1",
-    "babel-plugin-add-module-exports": "^0.2.1",
     "mocha": "^5.2.0",
-    "uglifyjs": "^2.4.10"
+    "uglify-js": "^3.9.4"
   }
 }

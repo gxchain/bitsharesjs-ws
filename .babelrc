@@ -1,11 +1,12 @@
 {
     "presets": [
-        "./tools/es2015Preset",
-        "stage-1"
+        [
+            "@babel/env"
+        ]
     ],
-    "env": {
-        "cjs": {
-            "plugins": ["add-module-exports"]
-        }
-    }
+    "plugins": [
+        [
+            "@babel/plugin-transform-runtime"
+        ]
+    ]
 }
